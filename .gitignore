@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pkl
+*.csv
+*.log
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Node modules (if using any JS package managers)
+node_modules/
+
+# Frontend build files (if applicable)
+dist/
+build/

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Renewable Energy Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+</head>
+<body>
+    <header class="hero">
+        <nav>
+            <div class="logo">EnergyAI Optimizer</div>
+            <ul class="nav-links">
+                <li><a href="#predictor">Predictor</a></li>
+                <li><a href="#visualization">Visualization</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content fade-in">
+            <h1>AI-Powered Renewable Energy Optimization</h1>
+            <p>Optimize your energy generation and storage using advanced AI predictions</p>
+            <div class="button-container">
+                <button class="cta-button" onclick="scrollToPredictor()">Start Optimization</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="predictor" class="input-section fade-in">
+        <h2>Energy Optimization Predictor</h2>
+        <form id="predictionForm" class="prediction-form">
+            <div class="form-group">
+                <h3>Geographic Parameters</h3>
+                <input type="number" id="latitude" placeholder="Latitude" required step="any">
+                <input type="number" id="longitude" placeholder="Longitude" required step="any">
+                <input type="number" id="elevation" placeholder="Elevation (meters)" required step="any">
+            </div>
+        
+            <div class="form-group">
+                <h3>Climate Data</h3>
+                <input type="number" id="temperature" placeholder="Temperature (°C)" required step="any">
+                <input type="number" id="humidity" placeholder="Humidity (%)" required step="any">
+                <input type="number" id="windSpeed" placeholder="Wind Speed (m/s)" required step="any">
+                <input type="number" id="solarRadiation" placeholder="Solar Radiation (W/m²)" required step="any">
+            </div>
+        
+            <div class="form-group">
+                <h3>Facility Specifications</h3>
+                <input type="number" id="area" placeholder="Available Area (m²)" required step="any">
+                <input type="number" id="energy_consumption" placeholder="Current Energy Consumption (kWh)" required step="any">
+            </div>
+        
+            <div class="validation-message"></div>
+            <button type="submit" class="submit-button" onclick="scrollToVisualization()">Generate Predictions</button>
+        </form>
+    </section>
+
+    <section id="visualization" class="visualization-section">
+        <h2>Energy Generation Insights</h2>
+        <div id="predictionResult" class="prediction-result">
+            <!-- Prediction result will be dynamically inserted here -->
+        </div>
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3>Energy Generation Potential</h3>
+                <canvas id="generationChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>ROI Projections</h3>
+                <canvas id="roiChart"></canvas>
+            </div>
+        </div>
+        <div id="map" class="location-map"></div>
+    </section>
+    <section id="recommendations" class="recommendations-section">
+        <h2>AI-Generated Recommendations</h2>
+        <div class="recommendations-container">
+            <div id="optimizationStrategies" class="recommendation-box hover-effect">
+                <h3>Optimization Strategies</h3>
+                <div class="strategies-content"></div>
+            </div>
+        </div>
+        <button id="downloadReport" class="download-button">Download Full Report</button>
+    </section>
+    <footer>
+        <p>© 2024 EnergyAI Optimizer. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
