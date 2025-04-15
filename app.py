@@ -1,29 +1,27 @@
 import pickle
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from sklearn.preprocessing import StandardScaler
 import numpy as np
+
+app = Flask(__name__, static_folder="static", template_folder="templates")
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 with open('model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 with open('scaler.pkl', 'rb') as scaler_file:
     scaler = pickle.load(scaler_file)
-app = Flask(__name__, static_folder="../frontend")
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 @app.route('/')
 def serve_index():
-    """Serve the main HTML file."""
-    return send_from_directory(app.static_folder, 'index.html')
-@app.route('/<path:path>', methods=['GET'])
-def serve_static_files(path):
-    """Serve static files like CSS and JS from the frontend folder."""
-    return send_from_directory(app.static_folder, path)
+    return render_template('index.html')
 @app.route('/api/predict', methods=['POST'])
 def predict():
-    """Handle predictions."""
     try:
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
+
         required_fields = [
             "latitude", "longitude", "elevation", 
             "temperature", "humidity", "windSpeed", 
@@ -32,6 +30,7 @@ def predict():
         missing_fields = [field for field in required_fields if field not in data]
         if missing_fields:
             return jsonify({"error": f"Missing fields: {', '.join(missing_fields)}"}), 400
+
         features = [
             data['latitude'], data['longitude'], data['elevation'],
             data['temperature'], data['humidity'], data['windSpeed'],
