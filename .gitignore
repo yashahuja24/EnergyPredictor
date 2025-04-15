@@ -1,8 +1,8 @@
 # Python
 __pycache__/
 *.py[cod]
-*.pkl
-*.csv
+#*.pkl
+#*.csv
 *.log
 
 # Virtual environment
